@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+@page { size: A4; margin: 0; }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { font-family: 'Tajawal', sans-serif; }
+
+body {
+  direction: rtl;
+  text-align: right;
+  color: #212B32;
+  font-size: 11pt;
+  line-height: 1.85;
+}
+
+.page {
+  width: 210mm; height: 297mm;
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+  background: #fff;
+}
+.page:last-child { page-break-after: auto; }
+
+.pad { padding: 15mm 18mm 20mm 18mm; }
+
+/* ---------- COVER ---------- */
+.cover-band {
+  background: #005EB8;
+  color: #fff;
+  padding: 18mm 18mm 15mm 18mm;
+}
+.hosp {
+  font-size: 12pt; font-weight: 500;
+  letter-spacing: .2pt;
+  opacity: .92;
+}
+.hosp-rule {
+  width: 30mm; height: 3pt; background: #41B6E6;
+  margin: 4mm 0 5mm 0; border-radius: 2pt;
+}
+.cover-title {
+  font-size: 28pt; font-weight: 800; line-height: 1.35;
+}
+.cover-sub {
+  font-size: 13.5pt; font-weight: 500; margin-top: 2.5mm; opacity: .95;
+}
+
+.cover-body { padding: 12mm 18mm 0 18mm; }
+.cover-body p { font-size: 12.2pt; line-height: 1.95; margin-bottom: 6mm; }
+.lead-first { font-weight: 500; }
+
+.pledge {
+  background: #F0F4F5;
+  border-right: 4pt solid #00A499;
+  padding: 7mm 8mm;
+  font-size: 12.2pt;
+  line-height: 1.95;
+  margin-top: 2mm;
+}
+.pledge .sig {
+  display: block; margin-top: 5mm;
+  font-weight: 700; color: #005EB8; font-size: 12pt;
+}
+
+.cover-foot {
+  margin: 7mm 18mm 0 18mm;
+  border-top: .7pt solid #D8DDE0;
+  padding-top: 4mm;
+  font-size: 9pt; color: #4C6272; line-height: 1.85;
+}
+
+/* ---------- HEADERS ---------- */
+.runhead {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 2.2pt solid #005EB8;
+  padding-bottom: 3.5mm; margin-bottom: 7mm;
+  font-size: 10pt; color: #005EB8; font-weight: 700;
+}
+.runhead span:last-child { color: #768692; font-weight: 500; }
+
+h2 {
+  font-size: 15pt; font-weight: 800; color: #003087;
+  border-right: 4.5pt solid #41B6E6;
+  padding-right: 5mm;
+  margin: 0 0 3.4mm 0;
+  line-height: 1.4;
+}
+h2.spaced { margin-top: 6mm; }
+
+p { margin-bottom: 4mm; }
+
+ul { list-style: none; margin: 0 0 4mm 0; }
+li {
+  position: relative;
+  padding-right: 7mm;
+  margin-bottom: 2.4mm;
+}
+li::before {
+  content: "";
+  position: absolute; right: 0; top: 6pt;
+  width: 2.8mm; height: 2.8mm;
+  background: #00A499; border-radius: 50%;
+}
+
+/* ---------- BOXES ---------- */
+.box {
+  padding: 4.5mm 5.5mm;
+  margin: 0 0 4mm 0;
+  border-radius: 2mm;
+}
+.box .bt {
+  font-weight: 800; font-size: 13pt;
+  margin-bottom: 3mm; display: block;
+}
+.box ul { margin-bottom: 0; }
+.box li { margin-bottom: 2mm; }
+
+.box-blue { background: #E8F1FA; border-right: 4pt solid #005EB8; }
+.box-blue .bt { color: #003087; }
+
+.box-teal { background: #E6F5F4; border-right: 4pt solid #00A499; }
+.box-teal .bt { color: #006B62; }
+.box-teal li::before { background: #00A499; }
+
+.box-amber { background: #FFF6E3; border-right: 4pt solid #ED8B00; }
+.box-amber .bt { color: #8A5200; }
+.box-amber li::before { background: #ED8B00; }
+
+.box-red { background: #FCECEB; border-right: 4pt solid #DA291C; }
+.box-red .bt { color: #B01A10; }
+.box-red li::before { background: #DA291C; }
+
+.hours {
+  background: #fff;
+  border: .8pt solid #B8DEDA;
+  border-radius: 1.2mm;
+  padding: 5mm 6mm;
+  margin: 4mm 0 5mm 0;
+  text-align: center;
+  line-height: 1.75;
+}
+.hours .d { display:block; font-weight: 500; color: #4C6272; font-size: 11.5pt; }
+.hours .t { font-weight: 800; color: #006B62; font-size: 17pt; display:block; margin-top: 1.5mm; }
+
+.stamp {
+  text-align: center;
+  font-weight: 800; color: #003087; font-size: 14.5pt;
+  background: #fff; border: 1pt dashed #7BA7D4;
+  border-radius: 1.5mm; padding: 4mm; margin: 3.5mm 0 3.5mm 0;
+}
+
+/* ---------- NOTES ---------- */
+.notes { margin-top: 1mm; }
+.box .nline { height: 8mm; padding-top: 2.5mm; margin-top: 3mm; }
+.nline {
+  border-bottom: .7pt dotted #93A1AA;
+  height: 11mm;
+  margin-bottom: 2.5mm;
+  font-size: 11pt; color: #4C6272; font-weight: 500;
+  padding-top: 4mm;
+}
+
+.foot-bar {
+  position: absolute; bottom: 0; right: 0; left: 0;
+  background: #005EB8; color: #fff;
+  padding: 5mm 18mm;
+  font-size: 10pt; font-weight: 500;
+  display: flex; justify-content: space-between;
+}
+.foot-note {
+  font-size: 10.5pt; color: #4C6272; line-height: 1.7;
+  border-top: .8pt solid #D8DDE0; padding-top: 3.5mm; margin-top: 3.5mm;
+}
+small.q { color:#768692; }
+
+.toc {
+  margin: 7mm 18mm 0 18mm;
+  border: .9pt solid #D8DDE0;
+  border-radius: 2mm;
+  padding: 5mm 6mm 3mm 6mm;
+}
+.toc-t {
+  display:block; font-weight: 800; color: #003087;
+  font-size: 12pt; margin-bottom: 3mm;
+}
+.toc ul { margin-bottom: 0; }
+.toc li { margin-bottom: 1.4mm; font-size: 10.5pt; }
+.toc li::before { background: #41B6E6; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 : COVER ================= -->
+<div class="page">
+  <div class="cover-band">
+    <div class="hosp">مستشفى مبارك &nbsp;·&nbsp; قسم أمراض القلب</div>
+    <div class="hosp-rule"></div>
+    <div class="cover-title">أهلاً بك في وحدة<br>الرعاية القلبية المركزة</div>
+    <div class="cover-sub">نشرة معلومات للمريض وذويه</div>
+  </div>
+
+  <div class="cover-body">
+    <p class="lead-first">نعلم أن دخول وحدة الرعاية المركزة ليس أمراً هيّناً، وأن ما تشعر به أنت وأسرتك الآن من قلق أمر طبيعي تماماً. نريدك أن تطمئن: وجودك هنا يعني أنك تحت مراقبة دقيقة ومستمرة، وأن فريقاً كاملاً من الأطباء والتمريض يتابع حالتك لحظة بلحظة.</p>
+
+    <div class="pledge">
+      نتعهّد لك بأن تنال أقصى درجات الرعاية الطبية الممكنة، وفق أحدث التوصيات والإرشادات الطبية العالمية المعتمدة في علاج أمراض القلب، وبأن نعاملك ونعامل أسرتك باحترام وتفهّم طوال فترة إقامتك معنا.
+      <span class="sig">صحتك أمانة في أعناقنا، وراحتك جزء من علاجك.</span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <span class="toc-t">في هذه النشرة</span>
+    <ul>
+      <li>لماذا أنت هنا؟ ومن الذي يرعاك</li>
+      <li>ماذا تتوقّع منّا، ومتى تطلب المساعدة فوراً</li>
+      <li>سلامتك أثناء الإقامة، وأدويتك</li>
+      <li>موعد تواصل أسرتك مع استشاري أمراض القلب</li>
+      <li>عند الخروج، وموعد المتابعة في عيادة القلب</li>
+    </ul>
+  </div>
+
+  <div class="cover-foot">
+    نشرة معلومات المرضى رقم: ..................... &nbsp;·&nbsp; تاريخ الإصدار: ..................... &nbsp;·&nbsp; تاريخ المراجعة المقرر: .....................<br>
+    أُعدّت هذه النشرة بمعرفة فريق وحدة الرعاية القلبية المركزة — مستشفى مبارك<br>
+    ومن يحتاج هذه النشرة بخط أكبر أو يحتاج مساعدة في قراءتها، فليخبر التمريض.
+  </div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page"><div class="pad">
+  <div class="runhead"><span>وحدة الرعاية القلبية المركزة</span><span>معلومات للمريض</span></div>
+
+  <h2>لماذا أنت هنا؟</h2>
+  <p>وحدة الرعاية القلبية المركزة مخصّصة لمتابعة مرضى القلب متابعة لصيقة خلال الأيام الأولى، وهي الأهم في رحلة العلاج. وجودك فيها لا يعني بالضرورة أن حالتك خطيرة، بل يعني أننا نريد مراقبة قلبك عن قرب حتى نطمئن عليك.</p>
+  <p>ستكون متصلاً بجهاز يراقب ضربات القلب والتنفس وضغط الدم، وقد تسمع تنبيهات صوتية بين الحين والآخر. أغلبها روتيني ولا يعني وجود خطر، والفريق يراها ويتابعها أولاً بأول.</p>
+
+  <h2 class="spaced">من الذي يرعاك هنا؟</h2>
+  <ul>
+    <li>استشاري أمراض القلب، وهو المسؤول عن خطة علاجك.</li>
+    <li>أطباء الوحدة المناوبون على مدار الأربع والعشرين ساعة.</li>
+    <li>فريق تمريض مدرَّب خصيصاً على الرعاية القلبية.</li>
+    <li>أخصائيو التغذية والعلاج الطبيعي عند الحاجة إليهم.</li>
+  </ul>
+
+  <h2 class="spaced">ماذا تتوقّع منّا؟</h2>
+  <ul>
+    <li>تفهّماً لحالتك وظروفك، وتعاطفاً مع ما تمرّ به.</li>
+    <li>رعاية طبية مستمرة على مدار الساعة، ليلاً ونهاراً.</li>
+    <li>شرحاً واضحاً لكل إجراء قبل إجرائه، وإجابة صادقة عن أسئلتك.</li>
+    <li>احتراماً لخصوصيتك وسرّية معلوماتك.</li>
+  </ul>
+
+  <div class="box box-amber" style="margin-top:2mm;">
+    <span class="bt">لا تتردّد أبداً في طلب المساعدة</span>
+    <p style="margin-bottom:0">إذا شعرت بألم أو انزعاج أو خوف، أو احتجت شيئاً، اطلب التمريض فوراً عبر جرس الاستدعاء. طلبك للمساعدة ليس إزعاجاً لنا بل هو صميم عملنا، وكثير من المشكلات يمكن تداركها بسهولة إذا أخبرتنا بها مبكراً.</p>
+  </div>
+
+  <div class="box box-red">
+    <span class="bt">أخبر الفريق فوراً إذا شعرت بـ</span>
+    <ul>
+      <li>ألم أو ضيق أو ثِقَل في الصدر، أو ضيق في التنفس.</li>
+      <li>خفقان أو عدم انتظام في ضربات القلب، أو دوخة شديدة أو إغماء.</li>
+      <li>نزيف أو تورّم في موضع القسطرة أو الحقن.</li>
+    </ul>
+  </div>
+
+  <div class="foot-bar"><span>مستشفى مبارك — وحدة الرعاية القلبية المركزة</span><span>٢</span></div>
+</div></div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page"><div class="pad">
+  <div class="runhead"><span>سلامتك وأدويتك</span><span>معلومات للمريض وذويه</span></div>
+
+  <h2>سلامتك أثناء الإقامة</h2>
+  <ul>
+    <li>أخبرنا بكل الأدوية التي تتناولها في المنزل، بما فيها الأعشاب والمكمّلات.</li>
+    <li>أخبرنا بأي حساسية سابقة من دواء أو طعام.</li>
+    <li>لا تنهض من السرير بمفردك دون إذن؛ اطلب المساعدة تجنّباً للسقوط.</li>
+    <li>حرّك قدميك وساقيك في السرير كما يرشدك الفريق، فذلك يقلّل خطر الجلطات.</li>
+    <li>نظافة الأيدي تحميك، ولا حرج في تذكير أي شخص بغسل يديه قبل لمسك.</li>
+    <li>لا تتناول طعاماً من خارج المستشفى قبل الرجوع إلى الفريق المعالج.</li>
+  </ul>
+
+  <h2 class="spaced">أدويتك</h2>
+  <p>أدوية القلب لا تؤدي عملها إلا بالانتظام عليها. التزم بالجرعات والمواعيد كما وُصفت لك تماماً، ولا توقف دواءً ولا تغيّر جرعته من تلقاء نفسك حتى لو شعرت بتحسّن. وإذا سبّب لك دواء أعراضاً مزعجة فالحل أن تخبر طبيبك، لا أن توقفه بنفسك.</p>
+
+  <h2 class="spaced">لأسرة المريض وذويه</h2>
+  <div class="box box-teal">
+    <span class="bt">موعد التواصل مع استشاري أمراض القلب</span>
+    <p>يمكن لأسرة المريض الاستفسار عن حالته الصحية وفهم أي تعليمات طبية بالتواصل المباشر مع استشاري أمراض القلب في الموعد التالي:</p>
+    <div class="hours">
+      <span class="d">يومياً من الأحد إلى الخميس</span>
+      <span class="t">١١:٣٠ صباحاً — ١٢:٣٠ ظهراً</span>
+    </div>
+    <p style="margin-bottom:0">خارج هذا الموعد، وفي الحالات الطارئة، يمكنكم التواصل مع طبيب الوحدة المناوب أو مسؤول التمريض.</p>
+  </div>
+
+  <ul>
+    <li>نرجو تحديد فرد واحد من الأسرة ليكون حلقة الوصل مع الفريق، حتى تصل المعلومة كاملة وصحيحة إلى الجميع.</li>
+    <li>حفاظاً على راحة المرضى وسلامتهم ومنعاً للعدوى، الزيارة محدودة بعدد الزوار والمواعيد المعلنة بالوحدة.</li>
+    <li>التزاماً بسرّية المعلومات الطبية، لا تُعطى تفاصيل الحالة إلا لمن يأذن له المريض.</li>
+  </ul>
+
+  <div class="foot-bar"><span>مستشفى مبارك — وحدة الرعاية القلبية المركزة</span><span>٣</span></div>
+</div></div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page"><div class="pad">
+  <div class="runhead"><span>عند الخروج وبعده</span><span>معلومات للمريض</span></div>
+
+  <h2>قبل أن تغادر المستشفى تأكّد من حصولك على</h2>
+  <ul>
+    <li>تقرير طبي يوضّح تشخيصك وما أُجري لك أثناء الإقامة.</li>
+    <li>قائمة واضحة بأدويتك وجرعاتها ومواعيدها.</li>
+    <li>تعليمات خاصة بحالتك: النشاط، والغذاء، والعناية بموضع القسطرة إن وُجد.</li>
+  </ul>
+
+  <div class="box box-blue">
+    <span class="bt">موعد المتابعة في عيادة القلب الخارجية</span>
+    <div class="stamp">في موعد أقصاه شهران من تاريخ الخروج</div>
+    <p style="margin-bottom:0">أو في الموعد الذي يحدده طبيبك. والمتابعة ليست إجراءً شكلياً: فيها تُراجَع أدويتك وتُضبط جرعاتها وتُكتشف أي مشكلة مبكراً.</p>
+    <div class="nline">موعد عيادتي بتاريخ:</div>
+  </div>
+
+  <div class="box box-red">
+    <span class="bt">عُد إلى الطوارئ فوراً بعد الخروج إذا حدث</span>
+    <ul>
+      <li>ألم في الصدر لا يزول بالراحة أو بالدواء الموصوف لك.</li>
+      <li>ضيق تنفس شديد، أو ضيق يوقظك من النوم عند الاستلقاء.</li>
+      <li>إغماء أو دوخة شديدة أو خفقان متواصل، أو تورّم مفاجئ في القدمين.</li>
+      <li>نزيف أو تورّم أو احمرار في موضع القسطرة.</li>
+    </ul>
+  </div>
+
+  <h2 class="spaced">خطوات تحمي قلبك بعد الخروج</h2>
+  <ul>
+    <li>الإقلاع التام عن التدخين؛ وهو أكثر قرار منفرد يقلّل احتمال تكرار الأزمة.</li>
+    <li>تقليل الملح والدهون، وضبط الضغط والسكر والدهون بالمتابعة المنتظمة.</li>
+    <li>العودة التدريجية للنشاط البدني حسب إرشاد طبيبك، وبرنامج تأهيل القلب إن توفّر.</li>
+    <li>القلق والضيق النفسي بعد أزمة قلبية شائع جداً ولا يدعو للحرج؛ أخبر طبيبك به.</li>
+    <li>اسأل طبيبك عن موعد العودة للعمل والقيادة والحياة الزوجية.</li>
+  </ul>
+
+  <div class="foot-note">
+    <strong>آراؤكم تهمّنا.</strong> ملاحظاتكم واقتراحاتكم وشكاواكم مرحَّب بها عبر مسؤول الوحدة أو إدارة المستشفى.
+  </div>
+
+  <div class="foot-bar"><span>مستشفى مبارك — وحدة الرعاية القلبية المركزة</span><span>٤</span></div>
+</div></div>
+
+</body>
+</html>
